@@ -32,7 +32,11 @@ jobs:
           dependencies-cache-enabled: true
           configuration-cache-enabled: true
 
+      - name: test
+        run: echo ${{ steps.Compile.outputs.filename }}
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
-            path: bin/
+          name: DiscordX
+          path: bin/
