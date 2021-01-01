@@ -13,6 +13,12 @@ jobs:
       - name: Grant Execute permissions for gradlew
         run: chmod +x gradlew
 
+      - name: Gradle Daemon Status
+        run: gradlew --status
+
+      - name: Stop Gradle Daemons
+        run: gradlew --stop
+
       - name: Compile
         id: Compile
         uses: eskatos/gradle-command-action@v1
@@ -22,5 +28,7 @@ jobs:
           dependencies-cache-enabled: true
           configuration-cache-enabled: true
 
-      - name: Echo Filenames
-        run: echo ${{ steps.Compile.outputs }}
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+            path: bin/
