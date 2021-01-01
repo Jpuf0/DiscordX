@@ -13,17 +13,13 @@ jobs:
       - name: Grant Execute permissions for gradlew
         run: chmod +x gradlew
 
-      # Execute Gradle commands in GitHub Actions workflows
-      # => https://github.com/marketplace/actions/gradle-command
-      - name: compile
+      - name: Compile
         uses: eskatos/gradle-command-action@v1
         with:
           arguments: build
           wrapper-cache-enabled: true
           dependencies-cache-enabled: true
           configuration-cache-enabled: true
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v1
-        with:
-            name: ${{ steps.compile.outputs.filename }}
-            path: ${{ steps.compile.outputs.artifactpath }}
+
+      - name: Echo Filenames
+        run: echo ${{ steps.Compile.outputs }}
