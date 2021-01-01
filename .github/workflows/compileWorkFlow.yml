@@ -14,6 +14,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Compile
+        id: Compile
         uses: eskatos/gradle-command-action@v1
         with:
           arguments: build
@@ -22,4 +23,4 @@ jobs:
           configuration-cache-enabled: true
 
       - name: Echo Filenames
-        run: echo ${{ steps.Compile.outputs }}
+        run: echo ${{ steps.Compile }}
