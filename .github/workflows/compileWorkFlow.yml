@@ -14,10 +14,14 @@ jobs:
         run: chmod +x gradlew
 
       - name: Gradle Daemon Status
-        run: gradlew --status
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: --status
 
       - name: Stop Gradle Daemons
-        run: gradlew --stop
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: --stop
 
       - name: Compile
         id: Compile
