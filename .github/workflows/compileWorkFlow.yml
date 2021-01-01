@@ -39,4 +39,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: DiscordX
-          path: bin/
+          path: bin/DiscordX v?.?.?.jar
